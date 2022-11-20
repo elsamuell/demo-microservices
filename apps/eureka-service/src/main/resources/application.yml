@@ -1,0 +1,27 @@
+spring:
+  config:
+    activate:
+      on-profile: default
+  application:
+    name: eureka-service
+  security:
+    user:
+      name: eureka
+      password: eureka
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+    leaseRenewalIntervalInSeconds: 10
+
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka
