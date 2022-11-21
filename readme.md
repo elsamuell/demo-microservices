@@ -18,6 +18,7 @@ This project consists of the following services by implementing <b> Clean Archit
 * Spring Cloud Config
 * Spring Doc Open API
 * H2database
+* Feign Client
 * Swagger UI
 
 ####  Usage
