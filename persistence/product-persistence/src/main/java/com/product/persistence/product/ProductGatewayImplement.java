@@ -26,19 +26,14 @@ public class ProductGatewayImplement implements ProductGateway {
 
     @Override
     public List<ProductModel> findByMerchantId(Long id) {
-        List<ProductModel> productModelList = new LinkedList<>();
-        productRepository.findByMerchantId(id).stream().forEach(v->{
-            productModelList.add(
+        return productRepository.findByMerchantId(id).stream().map(v->
                     ProductModel.builder()
                             .merchantId(v.getMerchantId())
                             .productName(v.getProductName())
                             .id(v.getId())
                             .price(v.getPrice())
                             .qty(v.getQty())
-                            .build()
-            );
-        });
-        return productModelList;
+                            .build());
     }
 
     @Override

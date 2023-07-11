@@ -13,17 +13,13 @@ public class GetProductsRestPresenter implements GetProductsPresenter {
 
     @Override
     public void present(List<ProductModel> productModelList) {
-        getProductsRestResponses = new LinkedList<>();
-        productModelList.stream().forEach(v->{
-            getProductsRestResponses.add(
+        return productModelList.stream().map(v->
                     GetProductsRestResponse.builder()
                             .id(v.getId())
                             .productName(v.getProductName())
                             .qty(v.getQty())
                             .price(v.getPrice())
-                            .build()
-            );
-        });
+                            .build());
     }
 
     public ResponseAware<List<GetProductsRestResponse>> get(){
